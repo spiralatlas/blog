@@ -11,9 +11,12 @@
       data.unsplash_user = page.unsplash_user;
     }
 
-    var cover = "https://source.unsplash.com/" + data.unsplash_id + "/" + theme.unsplash.header;
-    data.headerStyle = 'background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(' + cover + ')';
-
+    if (page.image) {
+      data.headerStyle = 'background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(' + page.image + ')';
+    } else {
+      var cover = "https://source.unsplash.com/" + data.unsplash_id + "/" + theme.unsplash.header;
+      data.headerStyle = 'background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(' + cover + ')';
+    }
     return data;
   }
 
