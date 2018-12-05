@@ -76,3 +76,11 @@ pagination_dir: page
 ## Themes: https://hexo.io/themes/
 
 theme: cam-blog
+
+theme_config:
+  google_analytics:
+  menu:
+    Home: /
+  social:
+  favicon:
+  comments:
