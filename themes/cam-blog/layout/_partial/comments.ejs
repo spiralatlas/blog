@@ -1,0 +1,56 @@
+<% if(page.comments && theme.comments && theme.comments.disqus_shortname){ %>
+    <hr />
+    <h3><%- __('comment')%>:</h3>
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+<% } %>
+
+<% if(page.comments && theme.comments && theme.comments.facebook && theme.comments.facebook.appid) { %>
+    <hr />
+    <h3><%- __('comment')%>:</h3>
+    <div id="fb-root"></div>
+    <script>
+        (function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=<%= theme.comments.facebook.appid %>";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+
+    <div class="fb-comments" data-href="<%= url %>" data-num-posts="<%= theme.comments.facebook.comment_count %>" data-width="100%" data-colorscheme="<%= theme.comments.facebook.comment_colorscheme %>"></div>
+<% } %>
+
+<% if(page.comments && theme.comments && theme.comments.gitment && theme.comments.gitment.client_id) { %>
+    <hr />
+    <h3><%- __('comment')%>:</h3>
+    <div id="gitment-container"></div>
+    
+    <link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css">
+    <script src="https://aimingoo.github.io/gitmint/dist/gitmint.browser.js"></script>
+
+    <script type="text/javascript">
+        var gitment = new Gitmint({
+            id: window.location.pathname,
+            owner: '<%= theme.comments.gitment.github_owner %>',
+            admin: ['<%= theme.comments.gitment.github_admin %>'],
+            repo: '<%= theme.comments.gitment.github_repo %>',
+            <% if (theme.comments.gitment.mint) { %>
+            lang: "<%= theme.comments.gitment.language %>" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
+            <% } %>
+            oauth: {
+            <% if (theme.comments.gitment.mint && theme.comments.gitment.redirect_protocol) { %>
+                redirect_protocol: '<%= theme.comments.gitment.redirect_protocol %>',
+            <% } %>
+            <% if (theme.comments.gitment.mint && theme.comments.gitment.proxy_gateway) { %>
+                proxy_gateway: '<%= theme.comments.gitment.proxy_gateway %>',
+            <% } else { %>
+                client_secret: '<%= theme.comments.gitment.client_secret %>',
+            <% } %>
+                client_id: '<%= theme.comments.gitment.client_id %>'
+            }});
+        gitment.render('gitment-container');
+    </script>
+<% } %>

@@ -1,0 +1,61 @@
+<% include _partial/helper.ejs %>
+<%
+  var headerInfo = mastheadData();
+
+  var items = [];
+  var title = '';
+  var isTagIndex = page.type === 'tags' || page.type === 'tag';
+  var isCategoryIndex = page.type === 'categories' || page.type === 'category';
+  if (isTagIndex) {
+    items = site.tags;
+    title = __('tags');
+  } else if (isCategoryIndex) {
+    items = site.categories;
+    title = __('categories');
+  }
+%>
+
+<!-- Page Header -->
+<header class="masthead" style="<%= headerInfo.headerStyle %>">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="page-heading">
+          <h1><%= page.title %></h1>
+          <% if (page.subtitle) { %><span class="subheading"><%= page.subtitle %></span><% } %>
+        </div>
+      </div>
+      <%- partial('_partial/unsplashCredit', {data: headerInfo}) %>
+    </div>
+  </div>
+</header>
+
+<% if (isTagIndex) { %>
+  <div class="container">
+    <div class="row">
+      <div class="mx-auto">
+        <%- d3cloudtag(site.tags) %>
+      </div>
+    </div>
+  </div>
+<% } else if (isCategoryIndex) { %>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <% items.forEach(function(item){ %>
+          <div class="post-preview">
+            <a href="<%- url_for(item.path) %>">
+              <h1 class="post-title archive">
+                <%- item.name || theme.default_post_title || '(no title)' %>
+              </h1>
+            </a>
+          </div>
+        <% }); %>
+      </div>
+    </div>
+  </div>
+<% } else { %>
+  <section class="main">
+    <%- partial('_partial/article', {item: page}) %>
+  </section>
+<% } %>

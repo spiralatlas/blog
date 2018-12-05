@@ -1,0 +1,14 @@
+<%
+  var categories = [];
+  if (item.categories && item.categories.length) {
+    categories.push('<span id="categories">');
+    item.categories.forEach(function(category){
+      categories.push('<span><a href="' + url_for(category.path) + '">' + category.name + '</a></span>');
+    });
+    categories.push('</span>');
+  }
+%>
+
+<% if (categories.length) { %>
+in <%- categories.join(' ') %>
+<% } %>

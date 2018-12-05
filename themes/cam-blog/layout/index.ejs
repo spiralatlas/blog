@@ -1,0 +1,66 @@
+<% include _partial/helper.ejs %>
+<%
+  var headerInfo = mastheadData();
+%>
+
+<!-- Page Header -->
+<header class="masthead" style="<%= headerInfo.headerStyle %>">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="site-heading">
+          <h1><%= config.title %></h1>
+          <% if (config.subtitle) { %><span class="subheading"><%= config.subtitle %></span><% } %>
+        </div>
+      </div>
+      <%- partial('_partial/unsplashCredit', {data: headerInfo}) %>
+    </div>
+  </div>
+</header>
+
+<!-- Main Content -->
+<div class="container">
+  <% page.posts.each(function(post){ %>
+  <div class="row">
+    <% if (theme.unsplash.show_thumbnails) { %>
+    <div class="col-lg-2 my-auto">
+      <a href="<%- url_for(post.path) %>">
+        <img class="unsplash-thumbnail" src="https://source.unsplash.com/<%= post.unsplash_id || theme.unsplash.default_id %>/800x600" />
+      </a>
+    </div>
+    <div class="col-lg-8">
+    <% } else { %>
+    <div class="col-lg-8 mx-auto">
+    <% } %>
+      <div class="post-preview">
+        <a href="<%- url_for(post.path) %>">
+          <h2 class="post-title"><%- post.title || theme.default_post_title || '(no title)' %></h2>
+        </a>
+        <% if(post.excerpt) { %>
+        <div class="post-subtitle"><%- post.excerpt %><a href="<%- url_for(post.path) %>" class="badge badge-light">More</a></div>
+        <% } %>
+        <p class="post-meta">
+          <%= post.date.format(config.date_format) %>
+          <%- partial('_partial/categories', {item: post}) %>
+          <%- partial('_partial/tags', {item: post}) %>
+        </p>
+      </div>
+      <hr>
+    </div>
+  </div>
+  <% }) %>
+
+  <div class="row">
+    <div class="col-lg-8 mx-auto">
+      <!-- Pager -->
+      <div class="clearfix">
+        <% if(page.next) { %>
+        <a class="btn btn-primary float-left" href="<%- url_for(page.next_link) %>">&larr; Older Posts</a>
+        <% } %>
+        <% if(page.prev) { %>
+        <a class="btn btn-primary float-right" href="<%- url_for(page.prev_link) %>">Newer Posts &rarr;</a>
+        <% } %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,11 @@
+<%
+  var tags = [];
+  if (item.tags)
+    item.tags.forEach(function(tag){
+      tags.push('<a href="' + url_for(tag.path) + '" class="badge badge-primary">#' + tag.name + '</a>');
+    });
+%>
+
+<% if (tags.length) { %>
+<span class="index-tags"><%- tags.join(' ') %></span>
+<% } %>

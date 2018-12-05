@@ -1,0 +1,26 @@
+<% include _partial/helper.ejs %>
+<%
+  var headerInfo = mastheadData();
+%>
+
+<!-- Page Header -->
+<header class="masthead" style="<%= headerInfo.headerStyle %>">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="post-heading">
+          <h1><%= page.title || theme.default_post_title || '(no title)' %></h1>
+          <% if (page.subtitle) { %><h2 class="subheading"><%= page.subtitle %></h2><% } %>
+          <span class="meta">
+            <%= page.date.format(config.date_format) %>
+            <%- partial('_partial/categories', {item: page}) %>
+            <%- partial('_partial/tags', {item: page}) %>
+          </span>
+        </div>
+      </div>
+      <%- partial('_partial/unsplashCredit', {data: headerInfo}) %>
+    </div>
+  </div>
+</header>
+
+<%- partial('_partial/article', {item: page}) %>
