@@ -5,6 +5,7 @@
 
     data.unsplash_id = theme.unsplash.default_id;
     data.unsplash_user = theme.unsplash.default_user;
+    data.image = theme.default_post_image;
 
     if (page.unsplash_id) {
       data.unsplash_id = page.unsplash_id;
@@ -13,6 +14,8 @@
 
     if (page.image) {
       data.headerStyle = 'background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(' + page.image + ')';
+    } else if (data.image) {
+      data.headerStyle = 'background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(' + data.image + ')';
     } else {
       var cover = "https://source.unsplash.com/" + data.unsplash_id + "/" + theme.unsplash.header;
       data.headerStyle = 'background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(' + cover + ')';
