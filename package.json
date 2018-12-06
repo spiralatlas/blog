@@ -15,9 +15,6 @@
     "hexo-cli": "^1.1.0"
   },
   "dependencies": {
-    "canvas-prebuilt": "^1.6.11",
-    "d3": "^5.7.0",
-    "d3-cloud": "^1.2.5",
     "hexo": "^3.8.0",
     "hexo-browsersync": "^0.3.0",
     "hexo-deployer-git": "^0.3.1",
