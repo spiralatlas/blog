@@ -22,10 +22,14 @@
 <div class="container">
   <% page.posts.each(function(post){ %>
   <div class="row">
-    <% if (theme.unsplash.show_thumbnails) { %>
+    <% if (theme.images.show_thumbnails) { %>
     <div class="col-lg-2 my-auto">
       <a href="<%- url_for(post.path) %>">
-        <img class="unsplash-thumbnail" src="https://source.unsplash.com/<%= post.unsplash_id || theme.unsplash.default_id %>/800x600" />
+        <% if (post.image || theme.images.default) { %>
+        <img class="post-thumbnail" src="<%= post.image || theme.images.default %>" />
+        <% } else { %>
+        <img class="post-thumbnail" src="https://source.unsplash.com/<%= post.unsplash_id || theme.unsplash.default_id %>/800x600" />
+        <% } %>
       </a>
     </div>
     <div class="col-lg-8">

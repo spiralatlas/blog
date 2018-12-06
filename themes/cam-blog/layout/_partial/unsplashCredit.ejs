@@ -1,4 +1,4 @@
-<% if (!page.image && !data.image) { %>
+<% if (data.showUnsplashCredit) { %>
 <div class="col-lg-12 col-md-12">
   <div class="unsplash-credit float-right">
     <h6>Photo by <a target="_blank" href="https://unsplash.com/photos/<%= data.unsplash_id %>"><%= data.unsplash_user %></a></h6>

@@ -4,6 +4,7 @@ menu:
   Tags: /tags
   Categories: /categories
   Github: https://github.com/distantcam || github
+  Feed: /feed.rss || feed
 
 social:
   twitter: https://twitter.com/distantcam
@@ -11,13 +12,14 @@ social:
   instagram: https://www.instagram.com/distantcam
   stack-overflow: https://stackoverflow.com/users/3820
 
-default_post_image:
+images:
+  default:
+  show_thumbnails: false
 
 unsplash:
   default_id: aOC7TSLb1o8
   default_user: Lauren Mancke
   header: 1600x1200
-  show_thumbnails: false
 
 # Title on top left of menu. Leave empty to use main blog title
 menu_title: 
@@ -38,6 +40,11 @@ favicon:
   # theme_color: "#ffffff"
 
 google_analytics:
+
+feed:
+  title: Subscribe to What's New
+  url: /feed.rss
+  type: rss
 
 comments:
   # Disqus comments
