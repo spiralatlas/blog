@@ -37,3 +37,13 @@
     border-color: darken($primary, 7.5) !important;
   }
 }
+
+.badge-light {
+  color:            lighten($black, 15%);
+  background-color: darken($bg-color, 2.5%);
+
+  &[href]:hover,
+  &[href]:focus {
+    background-color: darken($bg-color, 10%);
+  }
+}
