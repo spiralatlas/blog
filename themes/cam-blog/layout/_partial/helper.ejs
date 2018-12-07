@@ -12,12 +12,12 @@
     }
 
     if (page.image) {
-      data.headerStyle = 'background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(' + page.image + ')';
+      data.headerStyle = 'background-image: linear-gradient(rgba(' + theme.images.header_top + '), rgba(' + theme.images.header_bottom + ')), url(' + page.image + ')';
     } else if (theme.images.default) {
-      data.headerStyle = 'background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(' + theme.images.default + ')';
+      data.headerStyle = 'background-image: linear-gradient(rgba(' + theme.images.header_top + '), rgba(' + theme.images.header_bottom + ')), url(' + theme.images.default + ')';
     } else {
       var cover = "https://source.unsplash.com/" + data.unsplash_id + "/" + theme.unsplash.header;
-      data.headerStyle = 'background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(' + cover + ')';
+      data.headerStyle = 'background-image: linear-gradient(rgba(' + theme.images.header_top + '), rgba(' + theme.images.header_bottom + ')), url(' + cover + ')';
       data.showUnsplashCredit = true;
     }
     return data;

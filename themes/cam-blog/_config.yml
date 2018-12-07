@@ -3,18 +3,21 @@ menu:
   Home: /
   Tags: /tags
   Categories: /categories
-  Github: https://github.com/distantcam || github
-  Feed: /feed.rss || feed
+  Github: https://github.com/distantcam || github || fab
+  Feed: /feed.rss || rss
 
 social:
   twitter: https://twitter.com/distantcam
   github: https://github.com/distantcam
   instagram: https://www.instagram.com/distantcam
   stack-overflow: https://stackoverflow.com/users/3820
+  mastodon: https://mastodon.social/@distantcam
 
 images:
   default:
-  show_thumbnails: false
+  show_thumbnails: true
+  header_top: '0, 0, 0, 0.2'
+  header_bottom: '0, 0, 0, 0.8'
 
 unsplash:
   default_id: aOC7TSLb1o8

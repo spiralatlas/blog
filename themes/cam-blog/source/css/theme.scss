@@ -1,5 +1,9 @@
-@import 'variables.scss';
-@import 'mixins.scss';
+@import '_variables/base.scss';
+@import '_variables/custom.scss';
+
+@import '_mixins/base.scss';
+@import '_mixins/custom.scss';
+
 @import 'global.scss';
 @import 'navbar.scss';
 @import 'masthead.scss';
